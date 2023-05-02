@@ -6,7 +6,7 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 01:29:29 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/02 16:56:41 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/02 23:14:53 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,21 +36,21 @@ static int	check_input(char **argv)
 	return (SUCCESS_RETURN);
 }
 
-int	parse_input(int argc, char **argv, s_philo *philo)
+int	parse_input(int argc, char **argv, s_philo **philo)
 {
 	if (parse_args(argc) || check_input(argv))
 		return (FAILURE_RETURN);
-	philo = (s_philo *)__calloc(sizeof(s_philo), 1);
-	if (!philo)
+	(*philo) = __calloc(sizeof(s_philo), __atoi(argv[1]));
+	if (!(*philo))
 		return (FAILURE_RETURN);
-	philo->input = (s_input *)__calloc(sizeof(s_input), 1);
-	if (!philo->input)
+	(*philo)->input = __calloc(sizeof(s_input), 1);
+	if (!(*philo)->input)
 		return (FAILURE_RETURN);
-	philo->input->nbr_of_philos = __atoi(argv[1]);
-	philo->input->t_to_die = __atoi(argv[2]);
-	philo->input->t_to_eat = __atoi(argv[3]);
-	philo->input->t_to_sleep = __atoi(argv[4]);
+	(*philo)->input->nbr_of_philos = __atoi(argv[1]);
+	(*philo)->input->t_to_die = __atoi(argv[2]);
+	(*philo)->input->t_to_eat = __atoi(argv[3]);
+	(*philo)->input->t_to_sleep = __atoi(argv[4]);
 	if (argc == 6)
-		philo->input->nb_of_circles = __atoi(argv[5]);
+		(*philo)->input->nb_of_circles = __atoi(argv[5]);
 	return (SUCCESS_RETURN);
 }

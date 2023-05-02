@@ -6,7 +6,7 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 12:14:43 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/02 16:55:20 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/02 23:14:11 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,9 @@ typedef struct	t_input
 
 typedef struct	t_philo
 {
+	pthread_t		id;
 	s_input			*input;
 	int				rank;
-	struct t_philo	*right;
-	struct t_philo	*left;
 }	s_philo;
 
 //---------------------Parsing_utils-------------------//
@@ -65,12 +64,12 @@ int		__atoi(char *str);
 int		__print_error(char *str);
 
 //----------------------Parsing------------------------//
-int	parse_input(int argc, char **argv, s_philo *philo);
+int	parse_input(int argc, char **argv, s_philo **philo);
 
 //----------------------Init_utils------------------------//
 
 
 //-------------------------Init---------------------------//
-void	init_threads(s_philo *philo);
+int	init_threads(s_philo *philo);
 
 #endif
