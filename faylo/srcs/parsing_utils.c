@@ -6,11 +6,35 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 03:07:07 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/02 03:19:10 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/02 16:49:51 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../includes/philo.h"
+
+int	__print_error(char *str)
+{
+	if (!str)
+		return (FAILURE_RETURN);
+	write(2, str, __strlen(str));
+	return (FAILURE_RETURN);
+}
+
+void	*__calloc(size_t count, size_t size)
+{
+	size_t			i;
+	unsigned char	*tab;
+
+	if (size && count > SIZE_MAX / size)
+		return (NULL);
+	tab = (unsigned char *) malloc(size * count);
+	if (!tab)
+		return (NULL);
+	i = 0;
+	while (i < count * size)
+		tab[i++] = 0;
+	return (tab);
+}
 
 size_t	__strlen(char *str)
 {
@@ -22,13 +46,6 @@ size_t	__strlen(char *str)
 	while (str[count])
 		count++;
 	return (count);
-}
-
-void    __print_error(char *str)
-{
-	if (!str)
-		return;
-	write(2, str, __strlen(str));
 }
 
 int	__check_argv(char *str)
