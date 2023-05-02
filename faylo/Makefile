@@ -6,7 +6,7 @@
 #    By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/31 10:06:53 by ohalim            #+#    #+#              #
-#    Updated: 2023/04/28 15:25:01 by ohalim           ###   ########.fr        #
+#    Updated: 2023/05/02 01:39:52 by ohalim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ LIBFT_PATH		=		includes/libft/
 
 LIBFT_LIB		=		$(LIBFT_PATH)libft.a
 
-SRCS			=		philo.c
+SRCS			=		philo.c	parsing.c
 
 OBJS			=		$(addprefix srcs/,$(SRCS:.c=.o))
 
