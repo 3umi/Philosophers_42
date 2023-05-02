@@ -6,7 +6,7 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 12:14:43 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/02 03:19:20 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/02 03:46:04 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@
 #  define MIN -2147483648
 # endif
 
-# ifndef SUCESS_RETURN
-#  define SUCESS_RETURN 0
+# ifndef SUCCESS_RETURN
+#  define SUCCESS_RETURN 0
 # endif
 
 # ifndef	FAILURE_RETURN

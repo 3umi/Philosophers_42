@@ -6,7 +6,7 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 09:27:13 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/02 03:26:52 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/02 03:46:06 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,5 @@ int main(int argc, char **argv)
 
 	if (parse_input(argc, argv, &philo))
 		return (EXIT_FAILURE);
-	return (SUCESS_RETURN);
+	return (SUCCESS_RETURN);
 }
