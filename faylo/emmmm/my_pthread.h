@@ -1,6 +1,7 @@
 # include <pthread.h>
 
 //------------------------------------------------------------------------------------------------------------//
+int pthread_create(pthread_t *thread, const pthread_attr_t *attr, void *(*start_routine)(void *), void *arg);
 /*
     --> Used to create a thread.
 
@@ -11,7 +12,6 @@
     across multiple threads AKA int j == (int) ((void *) j) but there might be
     some problems if u try to cast the return value of pthread_create() when using pthread_join()).
 */
-int pthread_create(pthread_t *thread, const pthread_attr_t *attr, void *(*start_routine)(void *), void *arg);
 /*
     --> (pthread_t) Thread identifier, is a data type that represents a thread ID nd it is usually implemented as an unsigned integer type.
 */
