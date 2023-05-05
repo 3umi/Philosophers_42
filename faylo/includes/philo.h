@@ -6,7 +6,7 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 12:14:43 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/05 14:22:26 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/05 18:08:50 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,12 @@ typedef struct	t_input
 typedef struct	t_philo
 {
 	int				rank;
-	unsigned long	time;
-	s_input			*input;
+	unsigned long	creation_time;
+	unsigned long	last_meal;
+	pthread_mutex_t	*fork;
+	pthread_mutex_t	*display;
 	pthread_t		id;
+	s_input			*input;
 }	s_philo;
 
 //---------------------Parsing_utils-------------------//
