@@ -6,7 +6,7 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 12:14:43 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/02 23:14:11 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/05 14:22:26 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <stdio.h>
 # include <pthread.h>
 # include <string.h>
+# include <sys/time.h>
+# include <unistd.h>
 
 
 # ifndef MAX
@@ -51,9 +53,10 @@ typedef struct	t_input
 
 typedef struct	t_philo
 {
-	pthread_t		id;
-	s_input			*input;
 	int				rank;
+	unsigned long	time;
+	s_input			*input;
+	pthread_t		id;
 }	s_philo;
 
 //---------------------Parsing_utils-------------------//
@@ -70,6 +73,8 @@ int	parse_input(int argc, char **argv, s_philo **philo);
 
 
 //-------------------------Init---------------------------//
-int	init_threads(s_philo *philo);
+int		init_threads(s_philo *philo);
+unsigned long	timestamp(void);
+unsigned long	get_current_time(unsigned long start_time);
 
 #endif
