@@ -6,7 +6,7 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 12:14:43 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/08 20:25:59 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/08 20:54:47 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ t_philo	*parse_input(int argc, char **argv);
 
 //----------------------Init_utils------------------------//
 void	ft_usleep(long time_in_milli);
-void	ft_borintafo(t_philo *philo, char *def);
-void    __eat(t_philo *philo);
-void	__sleep(t_philo *philo);
+void	ft_borintafo(t_philo philo, char *def);
+void    __eat(t_philo philo);
+void	__sleep(t_philo philo);
 
 //-------------------------Init---------------------------//
 int				init_threads(t_philo *philo);

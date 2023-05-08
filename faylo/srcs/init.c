@@ -6,7 +6,7 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 16:35:58 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/08 20:11:14 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/08 20:57:04 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ void	*circle(void *arg)
 		ft_usleep(philo->data->t_to_eat);
 	while (1)
 	{
-		__eat(philo);
-		__sleep(philo);
-		ft_borintafo(philo, THINK);
+		__eat(*philo);
+		__sleep(*philo);
+		ft_borintafo(*philo, THINK);
 	}
 	return (NULL);
 }
@@ -48,8 +48,8 @@ int	init_threads(t_philo *philo)
 	i = 0;
 	while (i < philo->data->nb_of_philo)
 	{
-		philo[i].rank = i + 1;
 		philo[i].data->creation_time = timestamp();
+		philo[i].rank = i + 1;
 		philo[i].last_meal = philo[i].data->creation_time;
 		pthread_mutex_init(philo[i].fork, NULL);
 		pthread_mutex_init(&philo[i].data->display, NULL);

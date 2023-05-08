@@ -6,7 +6,7 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 01:29:29 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/08 20:29:16 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/08 20:50:00 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ static int	check_input(char **argv)
 
 t_philo	*parse_input(int argc, char **argv)
 {
-	int	i;
 	t_philo	*philo;
+	int	i;
 
 	i = 0;
 	if (parse_args(argc) || check_input(argv))
@@ -47,7 +47,7 @@ t_philo	*parse_input(int argc, char **argv)
 	philo = __calloc(sizeof(t_philo), __atoi(argv[1]));
 	if (!philo)
 		return (NULL);
-	while (i < 12)
+	while (i < __atoi(argv[1]))
 	{
 		philo[i].data = __calloc(sizeof(t_data), 1);
 		philo[i].fork = __calloc(sizeof(pthread_mutex_t), __atoi(argv[1]));
