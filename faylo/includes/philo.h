@@ -6,7 +6,7 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 12:14:43 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/08 20:54:47 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/08 21:41:36 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 #  define SUCCESS_RETURN 0
 #  define FAILURE_RETURN 1
 #  define UNDEFINED_RETURN 2
+#  define WAIT 15
 #  define FORK "has taken a fork"
 #  define EAT "is eating"
 #  define SLEEP "is sleeping"
@@ -69,8 +70,12 @@ void    __eat(t_philo philo);
 void	__sleep(t_philo philo);
 
 //-------------------------Init---------------------------//
-int				init_threads(t_philo *philo);
+int		init_threads(t_philo *philo);
 long	timestamp(void);
 long	current_timestamp(long start_time);
+
+//----------------------Main_thread_utils------------------------//
+int		check_death(t_philo philo);
+void	stalk_threads(t_philo *philo);
 
 #endif

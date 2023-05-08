@@ -6,7 +6,7 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 16:35:58 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/08 20:57:04 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/08 21:44:23 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	init_threads(t_philo *philo)
 	{
 		philo[i].data->creation_time = timestamp();
 		philo[i].rank = i + 1;
-		philo[i].last_meal = philo[i].data->creation_time;
+		philo[i].last_meal = timestamp();
 		pthread_mutex_init(philo[i].fork, NULL);
 		pthread_mutex_init(&philo[i].data->display, NULL);
 		if (pthread_create(&philo[i].id, NULL, &circle, philo + i) != 0)
