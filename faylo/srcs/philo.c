@@ -6,7 +6,7 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 09:27:13 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/08 14:05:47 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/08 20:29:31 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 int main(int argc, char **argv)
 {
-	s_philo	*philo;
+	t_philo	*philo;
 
-	if (parse_input(argc, argv, &philo))
+	philo = parse_input(argc, argv);
+	if (!philo)
 		return (FAILURE_RETURN);
 	if (init_threads(philo))
 		return (FAILURE_RETURN);

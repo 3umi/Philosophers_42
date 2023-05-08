@@ -6,7 +6,7 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 12:14:43 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/08 14:10:40 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/08 20:25:59 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,25 +32,25 @@
 #  define THINK "is thinking"
 #  define DIE "died"
 
-typedef struct	t_input
+typedef struct	s_data
 {
-	int 			nbr_of_philos;
+	int 			nb_of_philo;
+	int 			nb_of_circle;
 	int 			t_to_die;
 	int 			t_to_eat;
 	int 			t_to_sleep;
-	int 			nb_of_circles;
-	pthread_mutex_t	*display;
-}   s_input;
+	long			creation_time;
+	pthread_mutex_t	display;
+}   t_data;
 
-typedef struct	t_philo
+typedef struct	s_philo
 {
 	int				rank;
-	unsigned long	creation_time;
-	unsigned long	last_meal;
-	pthread_mutex_t	*fork;
+	long			last_meal;
 	pthread_t		id;
-	s_input			*input;
-}	s_philo;
+	pthread_mutex_t	*fork;
+	t_data			*data;
+}	t_philo;
 
 //---------------------Parsing_utils-------------------//
 void	*__calloc(size_t count, size_t size);
@@ -60,17 +60,17 @@ int		__atoi(char *str);
 int		__print_error(char *str);
 
 //----------------------Parsing------------------------//
-int	parse_input(int argc, char **argv, s_philo **philo);
+t_philo	*parse_input(int argc, char **argv);
 
 //----------------------Init_utils------------------------//
-void	ft_usleep(unsigned long time_in_milli);
-void	ft_borintafo(s_philo *philo, char *def);
-void    __eat(s_philo *philo);
-void	__sleep(s_philo *philo);
+void	ft_usleep(long time_in_milli);
+void	ft_borintafo(t_philo *philo, char *def);
+void    __eat(t_philo *philo);
+void	__sleep(t_philo *philo);
 
 //-------------------------Init---------------------------//
-int				init_threads(s_philo *philo);
-unsigned long	timestamp(void);
-unsigned long	current_timestamp(unsigned long start_time);
+int				init_threads(t_philo *philo);
+long	timestamp(void);
+long	current_timestamp(long start_time);
 
 #endif

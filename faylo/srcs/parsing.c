@@ -6,7 +6,7 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 01:29:29 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/08 14:12:27 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/08 20:29:16 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,23 +36,30 @@ static int	check_input(char **argv)
 	return (SUCCESS_RETURN);
 }
 
-int	parse_input(int argc, char **argv, s_philo **philo)
+t_philo	*parse_input(int argc, char **argv)
 {
+	int	i;
+	t_philo	*philo;
+
+	i = 0;
 	if (parse_args(argc) || check_input(argv))
-		return (FAILURE_RETURN);
-	(*philo) = __calloc(sizeof(s_philo), __atoi(argv[1]));
-	if (!(*philo))
-		return (FAILURE_RETURN);
-	(*philo)->input = __calloc(sizeof(s_input), 1);
-	(*philo)->input->display = __calloc(sizeof(pthread_mutex_t), 1);
-	(*philo)->fork = __calloc(sizeof(pthread_mutex_t), __atoi(argv[1]));
-	if (!(*philo)->input || !(*philo)->fork)
-		return (FAILURE_RETURN);
-	(*philo)->input->nbr_of_philos = __atoi(argv[1]);
-	(*philo)->input->t_to_die = __atoi(argv[2]);
-	(*philo)->input->t_to_eat = __atoi(argv[3]);
-	(*philo)->input->t_to_sleep = __atoi(argv[4]);
-	if (argc == 6)
-		(*philo)->input->nb_of_circles = __atoi(argv[5]);
-	return (SUCCESS_RETURN);
+		return (NULL);
+	philo = __calloc(sizeof(t_philo), __atoi(argv[1]));
+	if (!philo)
+		return (NULL);
+	while (i < 12)
+	{
+		philo[i].data = __calloc(sizeof(t_data), 1);
+		philo[i].fork = __calloc(sizeof(pthread_mutex_t), __atoi(argv[1]));
+		if (!philo[i].data || !philo[i].fork)
+			return (NULL);
+		philo[i].data->nb_of_philo = __atoi(argv[1]);
+		philo[i].data->t_to_die = __atoi(argv[2]);
+		philo[i].data->t_to_eat = __atoi(argv[3]);
+		philo[i].data->t_to_sleep = __atoi(argv[4]);
+		if (argc == 6)
+			philo[i].data->nb_of_circle = __atoi(argv[5]);
+		i++;
+	}
+	return (philo);
 }
