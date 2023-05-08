@@ -6,14 +6,12 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 12:14:43 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/05 18:08:50 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/08 14:10:40 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
-
-# include "../includes/libft/includes/libft.h"
 
 # include <stdio.h>
 # include <pthread.h>
@@ -21,34 +19,27 @@
 # include <sys/time.h>
 # include <unistd.h>
 
+# include "../includes/libft/includes/libft.h"
 
-# ifndef MAX
 #  define MAX 2147483647
-# endif
-
-# ifndef MIN
 #  define MIN -2147483648
-# endif
-
-# ifndef SUCCESS_RETURN
 #  define SUCCESS_RETURN 0
-# endif
-
-# ifndef FAILURE_RETURN
 #  define FAILURE_RETURN 1
-# endif
-
-# ifndef UNDEFINED_RETURN
 #  define UNDEFINED_RETURN 2
-# endif
+#  define FORK "has taken a fork"
+#  define EAT "is eating"
+#  define SLEEP "is sleeping"
+#  define THINK "is thinking"
+#  define DIE "died"
 
 typedef struct	t_input
 {
-	int 	nbr_of_philos;
-	int 	t_to_die;
-	int 	t_to_eat;
-	int 	t_to_sleep;
-	int 	nb_of_circles;
+	int 			nbr_of_philos;
+	int 			t_to_die;
+	int 			t_to_eat;
+	int 			t_to_sleep;
+	int 			nb_of_circles;
+	pthread_mutex_t	*display;
 }   s_input;
 
 typedef struct	t_philo
@@ -57,7 +48,6 @@ typedef struct	t_philo
 	unsigned long	creation_time;
 	unsigned long	last_meal;
 	pthread_mutex_t	*fork;
-	pthread_mutex_t	*display;
 	pthread_t		id;
 	s_input			*input;
 }	s_philo;
@@ -73,11 +63,14 @@ int		__print_error(char *str);
 int	parse_input(int argc, char **argv, s_philo **philo);
 
 //----------------------Init_utils------------------------//
-
+void	ft_usleep(unsigned long time_in_milli);
+void	ft_borintafo(s_philo *philo, char *def);
+void    __eat(s_philo *philo);
+void	__sleep(s_philo *philo);
 
 //-------------------------Init---------------------------//
-int		init_threads(s_philo *philo);
+int				init_threads(s_philo *philo);
 unsigned long	timestamp(void);
-unsigned long	get_current_time(unsigned long start_time);
+unsigned long	current_timestamp(unsigned long start_time);
 
 #endif

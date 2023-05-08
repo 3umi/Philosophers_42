@@ -6,7 +6,7 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 01:29:29 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/05 18:07:00 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/08 14:12:27 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	parse_input(int argc, char **argv, s_philo **philo)
 	if (!(*philo))
 		return (FAILURE_RETURN);
 	(*philo)->input = __calloc(sizeof(s_input), 1);
+	(*philo)->input->display = __calloc(sizeof(pthread_mutex_t), 1);
 	(*philo)->fork = __calloc(sizeof(pthread_mutex_t), __atoi(argv[1]));
 	if (!(*philo)->input || !(*philo)->fork)
 		return (FAILURE_RETURN);
