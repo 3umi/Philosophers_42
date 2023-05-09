@@ -6,7 +6,7 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 16:36:27 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/09 20:27:34 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/09 21:49:18 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,11 @@ void    __eat(t_philo *philo)
 	pthread_mutex_lock(&philo->fork[philo->rank % philo->data->nb_of_philo]);
 	ft_borintafo(philo, FORK);
 	ft_borintafo(philo, EAT);
+	pthread_mutex_lock(philo->last_meal_x);
 	philo->last_meal = timestamp();
+	pthread_mutex_unlock(philo->last_meal_x);
 	usleep(philo->data->t_to_eat * 1000);
+	philo->last_meal = timestamp();
 	pthread_mutex_unlock(&philo->fork[philo->rank - 1]);
 	pthread_mutex_unlock(&philo->fork[philo->rank % philo->data->nb_of_philo]);
 }

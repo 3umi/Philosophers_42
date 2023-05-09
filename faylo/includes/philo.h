@@ -6,7 +6,7 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 12:14:43 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/09 20:27:15 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/09 21:47:48 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct	s_philo
 	int				rank;
 	long			last_meal;
 	pthread_t		id;
+	pthread_mutex_t	*last_meal_x;
 	pthread_mutex_t	*fork;
 	t_data			*data;
 }	t_philo;

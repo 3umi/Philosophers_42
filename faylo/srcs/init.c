@@ -6,7 +6,7 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 16:35:58 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/09 20:42:08 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/09 21:48:45 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int	init_threads(t_philo *philo)
 		philo[i].last_meal = timestamp();
 		pthread_mutex_init(&philo->fork[i], NULL);
 		pthread_mutex_init(philo[i].data->display, NULL);
+		pthread_mutex_init(philo[i].last_meal_x, NULL);
 		if (pthread_create(&philo[i].id, NULL, &circle, philo + i) != 0)
 			return (__print_error("Not enough resources to create threads.\n"));
 		i++;

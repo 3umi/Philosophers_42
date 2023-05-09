@@ -6,7 +6,7 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 01:29:29 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/09 19:15:39 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/09 21:51:07 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ t_philo	*parse_input(int argc, char **argv)
 		philo[i].data = __calloc(sizeof(t_data), 1);
 		philo[i].fork = create_forks;
 		philo[i].data->display = create_display;
-		if (!philo[i].data || !philo[i].fork)
+		philo[i].last_meal_x = __calloc(sizeof(pthread_mutex_t), 1);
+		if (!philo[i].data || !philo[i].fork || !philo[i].last_meal_x)
 			return (NULL);
 		philo[i].data->nb_of_philo = __atoi(argv[1]);
 		philo[i].data->t_to_die = __atoi(argv[2]);
