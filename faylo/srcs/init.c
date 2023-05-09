@@ -6,7 +6,7 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 16:35:58 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/08 21:44:23 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/09 02:27:11 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ void	*circle(void *arg)
 		ft_usleep(philo->data->t_to_eat);
 	while (1)
 	{
-		__eat(*philo);
-		__sleep(*philo);
-		ft_borintafo(*philo, THINK);
+		__eat(philo);
+		__sleep(philo);
+		ft_borintafo(philo, THINK);
 	}
 	return (NULL);
 }

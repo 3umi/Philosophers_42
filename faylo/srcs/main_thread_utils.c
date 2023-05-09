@@ -6,7 +6,7 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 21:15:01 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/08 21:43:42 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/08 22:41:18 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 int	check_death(t_philo philo)
 {
 	if ((timestamp() - philo.last_meal) >= philo.data->t_to_die)
+	{
+		ft_borintafo(philo, DIE);
 		return (1);
+	}
 	return (0);
 }
 
@@ -25,13 +28,14 @@ void	stalk_threads(t_philo *philo)
 
 	i = 0;
 	ft_usleep(WAIT);
-	while (i < philo->data->nb_of_philo)
+	while (1)
 	{
-		if (check_death(philo[i]))
+		while (i < philo->data->nb_of_philo)
 		{
-			ft_borintafo(philo[i], DIE);
-			return ;
+			if (check_death(philo[i]))
+				return ;
+			i++;
 		}
-		i++;
+		i = 0;
 	}
 }
