@@ -6,7 +6,7 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 16:35:58 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/09 20:29:18 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/09 20:42:08 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,8 @@ void	*circle(void *arg)
 		usleep(philo->data->t_to_eat * 1000);
 	while (1)
 	{
-		pthread_mutex_lock(&philo->fork[philo->rank - 1]);
-		ft_borintafo(philo, FORK);
-		pthread_mutex_lock(&philo->fork[philo->rank % philo->data->nb_of_philo]);
-		ft_borintafo(philo, FORK);
-		ft_borintafo(philo, EAT);
-		philo->last_meal = timestamp();
-		usleep(philo->data->t_to_eat * 1000);
-		pthread_mutex_unlock(&philo->fork[philo->rank - 1]);
-		pthread_mutex_unlock(&philo->fork[philo->rank % philo->data->nb_of_philo]);
-		ft_borintafo(philo, SLEEP);
-		usleep(philo->data->t_to_sleep * 1000);
+		__eat(philo);
+		__sleep(philo);
 		ft_borintafo(philo, THINK);
 	}
 	return (NULL);
