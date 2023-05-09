@@ -6,7 +6,7 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 01:29:29 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/09 02:39:13 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/09 19:15:39 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,21 +38,24 @@ static int	check_input(char **argv)
 
 t_philo	*parse_input(int argc, char **argv)
 {
-	t_philo	*philo;
 	int	i;
-	pthread_mutex_t *forks_creat;
+	t_philo	*philo;
+	pthread_mutex_t *create_forks;
+	pthread_mutex_t	*create_display;
 
 	i = 0;
 	if (parse_args(argc) || check_input(argv))
 		return (NULL);
 	philo = __calloc(sizeof(t_philo), __atoi(argv[1]));
-	if (!philo)
+	create_forks = __calloc(sizeof(pthread_mutex_t), __atoi(argv[1]));
+	create_display = __calloc(sizeof(pthread_mutex_t), 1);
+	if (!philo || !create_forks || !create_display)
 		return (NULL);
-	forks_creat = __calloc(sizeof(pthread_mutex_t), __atoi(argv[1]));
 	while (i < __atoi(argv[1]))
 	{
 		philo[i].data = __calloc(sizeof(t_data), 1);
-		philo[i].fork = forks_creat;
+		philo[i].fork = create_forks;
+		philo[i].data->display = create_display;
 		if (!philo[i].data || !philo[i].fork)
 			return (NULL);
 		philo[i].data->nb_of_philo = __atoi(argv[1]);

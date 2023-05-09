@@ -6,7 +6,7 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 21:15:01 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/09 02:46:11 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/09 19:13:34 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,17 @@
 
 int	check_death(t_philo philo)
 {
-	pthread_mutex_lock(&philo.data->display);
+	pthread_mutex_lock(philo.data->display);
 	if ((timestamp() - philo.last_meal) >= philo.data->t_to_die)
 	{
-		usleep(1000);
 		printf("%lu ms %d %s\n", current_timestamp(philo.data->creation_time), philo.rank, DIE);
 		return (1);
 	}
-	pthread_mutex_unlock(&philo.data->display);
+	pthread_mutex_unlock(philo.data->display);
 	return (0);
 }
 
-void	stalk_threads(t_philo *philo)
+int	stalk_threads(t_philo *philo)
 {
 	int	i;
 
@@ -36,9 +35,10 @@ void	stalk_threads(t_philo *philo)
 		while (i < philo->data->nb_of_philo)
 		{
 			if (check_death(philo[i]))
-				return ;
+				return (FAILURE_RETURN);
 			i++;
 		}
 		i = 0;
 	}
+	return (SUCCESS_RETURN);
 }

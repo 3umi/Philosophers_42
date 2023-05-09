@@ -6,7 +6,7 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 12:14:43 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/09 02:37:28 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/09 19:12:53 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct	s_data
 	int 			t_to_eat;
 	int 			t_to_sleep;
 	long			creation_time;
-	pthread_mutex_t	display;
+	pthread_mutex_t	*display;
 }   t_data;
 
 typedef struct	s_philo
@@ -75,7 +75,6 @@ long	timestamp(void);
 long	current_timestamp(long start_time);
 
 //----------------------Main_thread_utils------------------------//
-int		check_death(t_philo philo);
-void	stalk_threads(t_philo *philo);
+int		stalk_threads(t_philo *philo);
 
 #endif

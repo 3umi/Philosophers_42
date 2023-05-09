@@ -6,7 +6,7 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 16:36:27 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/09 02:50:22 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/09 19:13:25 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	ft_usleep(long time_in_milli)
 
 void	ft_borintafo(t_philo *philo, char *def)
 {
-	pthread_mutex_lock(&philo->data->display);
+	pthread_mutex_lock(philo->data->display);
 	printf("%lu ms %d %s\n", current_timestamp(philo->data->creation_time), philo->rank, def);
-	pthread_mutex_unlock(&philo->data->display);
+	pthread_mutex_unlock(philo->data->display);
 }
 void    __eat(t_philo *philo)
 {
