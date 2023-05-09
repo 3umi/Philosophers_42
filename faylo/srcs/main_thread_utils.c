@@ -6,7 +6,7 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 21:15:01 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/09 19:13:34 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/09 20:28:05 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	stalk_threads(t_philo *philo)
 	int	i;
 
 	i = 0;
-	ft_usleep(WAIT);
+	usleep(WAIT * 1000);
 	while (1)
 	{
 		while (i < philo->data->nb_of_philo)
