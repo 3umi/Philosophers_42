@@ -6,44 +6,55 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 16:35:58 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/09 21:48:45 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/10 22:02:39 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/philo.h"
+#include "../includes/philo.h"
 
-long	timestamp(void)
+long timestamp(void)
 {
-	struct timeval	tv;
+	struct timeval tv;
 
 	gettimeofday(&tv, NULL);
 	return (((tv.tv_sec) * 1000) + (tv.tv_usec / 1000));
 }
 
-long	current_timestamp(long start_time)
+long current_timestamp(long start_time)
 {
 	return (timestamp() - start_time);
 }
 
-void	*circle(void *arg)
+void *circle(void *arg)
 {
 	t_philo *philo;
 
 	philo = arg;
 	if ((philo->rank % 2) == 0)
-		usleep(philo->data->t_to_eat * 1000);
+		ft_usleep(philo->data->t_to_eat);
 	while (1)
 	{
-		__eat(philo);
-		__sleep(philo);
+		pthread_mutex_lock(&philo->fork[philo->rank - 1]);
+		ft_borintafo(philo, FORK);
+		pthread_mutex_lock(&philo->fork[philo->rank % philo->data->nb_of_philo]);
+		ft_borintafo(philo, FORK);
+		ft_borintafo(philo, EAT);
+		pthread_mutex_lock(philo->last_meal_x);
+		philo->last_meal = timestamp();
+		pthread_mutex_unlock(philo->last_meal_x);
+		ft_usleep(philo->data->t_to_eat);
+		pthread_mutex_unlock(&philo->fork[philo->rank - 1]);
+		pthread_mutex_unlock(&philo->fork[philo->rank % philo->data->nb_of_philo]);
 		ft_borintafo(philo, THINK);
+		ft_borintafo(philo, SLEEP);
+		ft_usleep(philo->data->t_to_sleep);
 	}
 	return (NULL);
 }
 
-int	init_threads(t_philo *philo)
+int init_threads(t_philo *philo)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (i < philo->data->nb_of_philo)
@@ -60,4 +71,3 @@ int	init_threads(t_philo *philo)
 	}
 	return (SUCCESS_RETURN);
 }
-

@@ -6,11 +6,11 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 01:29:29 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/09 21:51:07 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/10 22:00:16 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/philo.h"
+#include "../includes/philo.h"
 
 static int parse_args(int argc)
 {
@@ -20,28 +20,28 @@ static int parse_args(int argc)
 	return (SUCCESS_RETURN);
 }
 
-static int	check_input(char **argv)
+static int check_input(char **argv)
 {
-	int	index;
+	int index;
 
 	index = 1;
 	while (argv[index])
 	{
 		if (__check_argv(argv[index]))
 			return (__print_error("Usage:\n\tNumeric input is required.\n"));
-        else if (__atoi(argv[index]) <= 0)
-            return (__print_error("Usage:\n\tStrict positive input is required.\n"));
+		else if (__atoi(argv[index]) <= 0)
+			return (__print_error("Usage:\n\tStrict positive input is required.\n"));
 		index++;
 	}
 	return (SUCCESS_RETURN);
 }
 
-t_philo	*parse_input(int argc, char **argv)
+t_philo *parse_input(int argc, char **argv)
 {
-	int	i;
-	t_philo	*philo;
+	int i;
+	t_philo *philo;
 	pthread_mutex_t *create_forks;
-	pthread_mutex_t	*create_display;
+	pthread_mutex_t *create_display;
 
 	i = 0;
 	if (parse_args(argc) || check_input(argv))
@@ -57,7 +57,7 @@ t_philo	*parse_input(int argc, char **argv)
 		philo[i].fork = create_forks;
 		philo[i].data->display = create_display;
 		philo[i].last_meal_x = __calloc(sizeof(pthread_mutex_t), 1);
-		if (!philo[i].data || !philo[i].fork || !philo[i].last_meal_x)
+		if (!philo[i].data || !philo[i].fork)
 			return (NULL);
 		philo[i].data->nb_of_philo = __atoi(argv[1]);
 		philo[i].data->t_to_die = __atoi(argv[2]);
