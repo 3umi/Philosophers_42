@@ -6,7 +6,7 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 12:14:43 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/10 22:00:11 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/11 10:58:36 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,12 @@ typedef struct s_data
 typedef struct s_philo
 {
 	int rank;
+	int circle;
 	long last_meal;
 	pthread_t id;
 	pthread_mutex_t *last_meal_x;
 	pthread_mutex_t *fork;
+	pthread_mutex_t *circle_x;
 	t_data *data;
 } t_philo;
 

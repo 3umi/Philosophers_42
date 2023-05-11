@@ -6,7 +6,7 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 16:35:58 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/10 22:02:39 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/11 11:09:24 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,12 @@ void *circle(void *arg)
 		pthread_mutex_lock(&philo->fork[philo->rank % philo->data->nb_of_philo]);
 		ft_borintafo(philo, FORK);
 		ft_borintafo(philo, EAT);
+		if (philo->data->nb_of_circle > 0)
+		{
+			pthread_mutex_lock(philo->circle_x);
+			philo->circle--;
+			pthread_mutex_unlock(philo->circle_x);
+		}
 		pthread_mutex_lock(philo->last_meal_x);
 		philo->last_meal = timestamp();
 		pthread_mutex_unlock(philo->last_meal_x);
@@ -65,6 +71,8 @@ int init_threads(t_philo *philo)
 		pthread_mutex_init(&philo->fork[i], NULL);
 		pthread_mutex_init(philo[i].data->display, NULL);
 		pthread_mutex_init(philo[i].last_meal_x, NULL);
+		if (philo[i].data->nb_of_circle > 0)
+			pthread_mutex_init(philo[i].circle_x, NULL);
 		if (pthread_create(&philo[i].id, NULL, &circle, philo + i) != 0)
 			return (__print_error("Not enough resources to create threads.\n"));
 		i++;

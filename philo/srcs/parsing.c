@@ -6,7 +6,7 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 01:29:29 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/10 22:00:16 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/11 10:59:11 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,13 @@ t_philo *parse_input(int argc, char **argv)
 		philo[i].data->t_to_eat = __atoi(argv[3]);
 		philo[i].data->t_to_sleep = __atoi(argv[4]);
 		if (argc == 6)
+		{
 			philo[i].data->nb_of_circle = __atoi(argv[5]);
+			philo[i].circle_x = __calloc(sizeof(pthread_mutex_t), 1);
+			philo[i].circle = __atoi(argv[5]);
+		}
+		else
+			philo[i].data->nb_of_circle = -1;
 		i++;
 	}
 	return (philo);

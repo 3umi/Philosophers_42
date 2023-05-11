@@ -6,7 +6,7 @@
 #    By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/31 10:06:53 by ohalim            #+#    #+#              #
-#    Updated: 2023/05/10 22:50:55 by ohalim           ###   ########.fr        #
+#    Updated: 2023/05/11 11:06:15 by ohalim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ NAME			=		philo
 
 CC				=		cc
 
-CFLAGS			=		-Wall -Wextra -Werror
+CFLAGS			=		-Wall -Wextra -Werror -fsanitize=address -g3
 
 RM				=		rm -f
 

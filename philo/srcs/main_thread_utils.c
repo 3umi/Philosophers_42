@@ -6,7 +6,7 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 21:15:01 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/10 22:09:52 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/11 11:18:53 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,25 @@ int check_death(t_philo philo)
 	return (SUCCESS_RETURN);
 }
 
+int check_circle(t_philo *philo)
+{
+	int i;
+
+	i = 0;
+	while (i < philo->data->nb_of_philo)
+	{
+		pthread_mutex_lock(philo[i].circle_x);
+		if (philo[i].circle > 0)
+		{
+			pthread_mutex_unlock(philo[i].circle_x);
+			return (SUCCESS_RETURN);
+		}
+		pthread_mutex_unlock(philo[i].circle_x);
+		i++;
+	}
+	return (FAILURE_RETURN);
+}
+
 int stalk_threads(t_philo *philo)
 {
 	int i;
@@ -34,6 +53,11 @@ int stalk_threads(t_philo *philo)
 	ft_usleep(WAIT);
 	while (1)
 	{
+		if (philo->data->nb_of_circle > 0)
+		{
+			if (check_circle(philo))
+				return (FAILURE_RETURN);
+		}
 		while (i < philo->data->nb_of_philo)
 		{
 			if (check_death(philo[i]))
