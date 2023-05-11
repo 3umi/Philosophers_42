@@ -76,7 +76,7 @@ t_philo	*parse_input(int argc, char **argv)
 		philo[i].fork = create_forks;
 		philo[i].data->display = create_display;
 		philo[i].last_meal_x = __calloc(sizeof(pthread_mutex_t), 1);
-		if (!philo[i].data || !philo[i].fork)
+		if (!philo[i].data || !philo[i].last_meal_x)
 			return (NULL);
 		insert_data(argc, argv, &philo[i]);
 		i++;
