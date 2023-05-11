@@ -71,3 +71,7 @@ tags
 .history
 .ionide
 ### unwanted
+*.o
+*.a
+philo
+philo_bonus
