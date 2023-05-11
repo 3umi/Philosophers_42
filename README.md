@@ -1,1 +1,1 @@
-# Faylo
+# Philosophers
