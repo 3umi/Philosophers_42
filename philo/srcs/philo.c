@@ -6,15 +6,15 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 09:27:13 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/11 15:15:07 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/11 20:23:43 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_philo *philo;
+	t_philo	*philo;
 
 	philo = parse_input(argc, argv);
 	if (!philo)

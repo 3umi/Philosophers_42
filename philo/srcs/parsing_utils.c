@@ -6,11 +6,11 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 03:07:07 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/02 16:49:51 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/11 20:23:00 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/philo.h"
+#include "../includes/philo.h"
 
 int	__print_error(char *str)
 {
@@ -105,4 +105,3 @@ int	__atoi(char *str)
 	}
 	return (num * sign);
 }
-

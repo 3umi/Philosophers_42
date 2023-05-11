@@ -6,13 +6,13 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 01:29:29 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/11 10:59:11 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/11 20:53:39 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-static int parse_args(int argc)
+static int	parse_args(int argc)
 {
 	if (argc > 6 || argc < 5)
 		return (__print_error("Usage:\n\t./philo\t  [nbr_of_philos]\t[t_to_die]\
@@ -20,9 +20,9 @@ static int parse_args(int argc)
 	return (SUCCESS_RETURN);
 }
 
-static int check_input(char **argv)
+static int	check_input(char **argv)
 {
-	int index;
+	int	index;
 
 	index = 1;
 	while (argv[index])
@@ -30,18 +30,37 @@ static int check_input(char **argv)
 		if (__check_argv(argv[index]))
 			return (__print_error("Usage:\n\tNumeric input is required.\n"));
 		else if (__atoi(argv[index]) <= 0)
-			return (__print_error("Usage:\n\tStrict positive input is required.\n"));
+		{
+			write(2, "Usage:\n\t", 8);
+			return (__print_error("Strict positive input is required.\n"));
+		}
 		index++;
 	}
 	return (SUCCESS_RETURN);
 }
 
-t_philo *parse_input(int argc, char **argv)
+void	insert_data(int argc, char **argv, t_philo *philo)
 {
-	int i;
-	t_philo *philo;
-	pthread_mutex_t *create_forks;
-	pthread_mutex_t *create_display;
+	philo->data->nb_of_philo = __atoi(argv[1]);
+	philo->data->t_to_die = __atoi(argv[2]);
+	philo->data->t_to_eat = __atoi(argv[3]);
+	philo->data->t_to_sleep = __atoi(argv[4]);
+	if (argc == 6)
+	{
+		philo->data->nb_of_circle = __atoi(argv[5]);
+		philo->circle_x = __calloc(sizeof(pthread_mutex_t), 1);
+		philo->circle = __atoi(argv[5]);
+	}
+	else
+		philo->data->nb_of_circle = -1;
+}
+
+t_philo	*parse_input(int argc, char **argv)
+{
+	int				i;
+	t_philo			*philo;
+	pthread_mutex_t	*create_forks;
+	pthread_mutex_t	*create_display;
 
 	i = 0;
 	if (parse_args(argc) || check_input(argv))
@@ -59,18 +78,7 @@ t_philo *parse_input(int argc, char **argv)
 		philo[i].last_meal_x = __calloc(sizeof(pthread_mutex_t), 1);
 		if (!philo[i].data || !philo[i].fork)
 			return (NULL);
-		philo[i].data->nb_of_philo = __atoi(argv[1]);
-		philo[i].data->t_to_die = __atoi(argv[2]);
-		philo[i].data->t_to_eat = __atoi(argv[3]);
-		philo[i].data->t_to_sleep = __atoi(argv[4]);
-		if (argc == 6)
-		{
-			philo[i].data->nb_of_circle = __atoi(argv[5]);
-			philo[i].circle_x = __calloc(sizeof(pthread_mutex_t), 1);
-			philo[i].circle = __atoi(argv[5]);
-		}
-		else
-			philo[i].data->nb_of_circle = -1;
+		insert_data(argc, argv, &philo[i]);
 		i++;
 	}
 	return (philo);
