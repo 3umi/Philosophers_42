@@ -6,7 +6,7 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 12:14:43 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/11 20:15:20 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/12 17:01:27 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <sys/time.h>
 # include <unistd.h>
 
-# include "../includes/libft/includes/libft.h"
+# include "libft/includes/libft.h"
 
 # define MAX 2147483647
 # define MIN -2147483648
