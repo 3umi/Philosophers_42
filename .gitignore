@@ -73,5 +73,3 @@ tags
 ### unwanted
 *.o
 *.a
-philo
-philo_bonus
