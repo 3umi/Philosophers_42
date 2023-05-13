@@ -6,7 +6,7 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 17:04:05 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/12 17:05:39 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/14 00:06:59 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,20 @@
 
 int	main(int argc, char **argv)
 {
-	(void)argc;
-	(void)argv;
-	ft_printf("Started bonus\n");
+	int		i;
+	pid_t	pid;
+	t_philo	*philo;
+
+	i = 0;
+	if (parse_args(argc) || check_input(argv))
+		return (NULL);
+	while (i < __atoi(argv[1]))
+	{
+		pid = fork();
+		if (pid < 0)
+			__print_error("Failed to create new process.\n");
+		if (pid == 0)
+			parse_input();
+	}
 	return (SUCCESS_RETURN);
 }
