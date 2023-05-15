@@ -6,7 +6,7 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 16:59:54 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/13 23:23:26 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/15 03:20:02 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <pthread.h>
 # include <semaphore.h>
 # include <sys/time.h>
+# include <signal.h>
 
 # include "libft/includes/libft.h"
 
@@ -39,7 +40,8 @@ typedef struct s_data
 	int				t_to_eat;
 	int				t_to_sleep;
 	long			creation_time;
-	pthread_mutex_t	*display;
+	sem_t			*fork;
+	sem_t			*display;
 }	t_data;
 
 typedef struct s_philo
@@ -47,10 +49,8 @@ typedef struct s_philo
 	int				rank;
 	int				circle;
 	long			last_meal;
-	pthread_t		id;
-	pthread_mutex_t	*last_meal_x;
-	pthread_mutex_t	*fork;
-	pthread_mutex_t	*circle_x;
+	sem_t			*last_meal_s;
+	sem_t			*circle_s;
 	t_data			*data;
 }	t_philo;
 
@@ -62,7 +62,21 @@ int		__atoi(char *str);
 int		__print_error(char *str);
 
 //----------------------Parsing------------------------//
-int		parse_args(int argc);
-int		check_input(char **argv);
+int		check_argc(int argc);
+int		check_argv(char **argv);
+pid_t	*init_processes(int argc, char **argv);
+
+//----------------------Init_utils------------------------//
+void	ft_usleep(long time);
+long	timestamp(void);
+long	current_timestamp(long start_time);
+void	ft_borintafo(t_philo *philo, char *def);
+void	__eat(t_philo *philo);
+
+//-------------------------Init------------------------//
+int		check_death(t_philo philo);
+int		check_circle(t_philo *philo);
+void	*stalk_thread(void *arg);
+void	init_circle(t_philo philo);
 
 #endif
