@@ -6,7 +6,7 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 16:59:54 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/15 03:20:02 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/16 03:13:48 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@
 # define THINK "is thinking"
 # define DIE "died"
 
+# define WAIT 15
+
 typedef struct s_data
 {
 	int				nb_of_philo;
@@ -50,7 +52,6 @@ typedef struct s_philo
 	int				circle;
 	long			last_meal;
 	sem_t			*last_meal_s;
-	sem_t			*circle_s;
 	t_data			*data;
 }	t_philo;
 
@@ -77,6 +78,7 @@ void	__eat(t_philo *philo);
 int		check_death(t_philo philo);
 int		check_circle(t_philo *philo);
 void	*stalk_thread(void *arg);
-void	init_circle(t_philo philo);
+void	init_circle(t_philo *philo);
+void	wait_for_processes(pid_t *pid, int nb_of_proc);
 
 #endif

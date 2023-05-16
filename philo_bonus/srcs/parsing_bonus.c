@@ -6,7 +6,7 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 23:10:57 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/15 03:41:42 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/16 02:34:03 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,12 @@ pid_t	*init_processes(int argc, char **argv)
 		pid[i] = fork();
 		philo.data->creation_time = timestamp();
 		if (pid[i] < 0)
+		{
+			__print_error("Failed to create new processes\n");
 			return (NULL);
+		}
 		if (pid[i] == 0)
-			init_circle(philo);
+			init_circle(&philo);
 		i++;
 	}
 	return (pid);
