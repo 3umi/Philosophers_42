@@ -6,12 +6,11 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 17:04:05 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/16 02:48:42 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/16 04:32:34 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/philo_bonus.h"
-
+#include "../includes/philo_bonus.h"
 
 int	main(int argc, char **argv)
 {

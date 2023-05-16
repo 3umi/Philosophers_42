@@ -6,17 +6,18 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 16:59:54 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/16 03:13:48 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/16 04:27:30 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#ifndef PHILO_BONUS_H
+# define PHILO_BONUS_H
 
 # include <pthread.h>
 # include <semaphore.h>
 # include <sys/time.h>
 # include <signal.h>
+# include <stdbool.h>
 
 # include "libft/includes/libft.h"
 
@@ -65,6 +66,7 @@ int		__print_error(char *str);
 //----------------------Parsing------------------------//
 int		check_argc(int argc);
 int		check_argv(char **argv);
+void	kill_processes(pid_t *pid, int len, bool error);
 pid_t	*init_processes(int argc, char **argv);
 
 //----------------------Init_utils------------------------//

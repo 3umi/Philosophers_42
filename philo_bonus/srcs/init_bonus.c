@@ -6,29 +6,20 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 22:34:22 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/16 03:17:22 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/16 04:35:46 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/philo_bonus.h"
+#include "../includes/philo_bonus.h"
 
 void	wait_for_processes(pid_t *pid, int nb_of_proc)
 {
-	int	i;
 	int	exit_status;
 
-	i = 0;
 	while (waitpid(-1, &exit_status, 0) != -1)
 	{
 		if (WEXITSTATUS(exit_status) == 1)
-		{
-			while (i < nb_of_proc)
-			{
-				kill(pid[i], SIGKILL);
-				i++;
-			}
-			exit (0);
-		}
+			kill_processes(pid, nb_of_proc, 0);
 	}
 	exit (0);
 }
@@ -68,9 +59,12 @@ void	init_circle(t_philo *philo)
 	philo->last_meal = timestamp();
 	philo->last_meal_s = sem_open("last_meal_s", O_CREAT, 0666, 1);
 	if (philo->last_meal_s == SEM_FAILED)
-			return ;
-	if (pthread_create(&id, NULL, &circle, philo) != 0)
 		return ;
+	if (pthread_create(&id, NULL, &circle, philo) != 0)
+	{
+		__print_error("Not enough resources to create threads.\n");
+		return ;
+	}
 	ft_usleep(WAIT);
 	while (1)
 	{
