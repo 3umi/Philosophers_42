@@ -6,7 +6,7 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 12:14:43 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/12 17:01:27 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/16 05:21:48 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 # define PHILO_H
 
 # include <stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
 # include <pthread.h>
 # include <string.h>
 # include <sys/time.h>
-# include <unistd.h>
-
-# include "libft/includes/libft.h"
 
 # define MAX 2147483647
 # define MIN -2147483648

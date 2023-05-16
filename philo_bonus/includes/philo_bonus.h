@@ -6,20 +6,23 @@
 /*   By: ohalim <ohalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 16:59:54 by ohalim            #+#    #+#             */
-/*   Updated: 2023/05/16 04:27:30 by ohalim           ###   ########.fr       */
+/*   Updated: 2023/05/16 04:52:43 by ohalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_BONUS_H
 # define PHILO_BONUS_H
 
+# include <stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <fcntl.h>
 # include <pthread.h>
 # include <semaphore.h>
 # include <sys/time.h>
+# include <sys/wait.h>
 # include <signal.h>
 # include <stdbool.h>
-
-# include "libft/includes/libft.h"
 
 # define MAX 2147483647
 # define MIN -2147483648
