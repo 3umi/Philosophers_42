@@ -6,4 +6,11 @@
 	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/3umi/philosophers_42?color=green" />
 </p>
 
-# Philosophers
+# **Philosophers**
+
+## *Description*
+
+<div align="center">
+	<b> This program is a simulation of the dining philosophers problem. <br> <br> </b>
+	<img src="Resources/GIF/philo.gif" style="height: 275px; width:450px;background-color: #17202A;">
+<align="center" />
