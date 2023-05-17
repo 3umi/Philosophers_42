@@ -36,3 +36,9 @@
 - [x] Multiprocessing
 - [x] Multithreading
 - [x] Semaphores
+
+## *Resources*
+
+<i>~ The Linux Programming Interface by <b>Michael Kerrisk</b></i> :
+<br>
+https://cdn.discordapp.com/attachments/1059463962049138758/1059464022707150858/The_Linux_Programming_Interface__PDFDrive_.pdf
