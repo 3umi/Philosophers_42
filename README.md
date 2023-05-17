@@ -47,6 +47,6 @@
 
 ## <span id="resources">*Resources*</span>
 
-<i>~ The Linux Programming Interface by <b>Michael Kerrisk</b></i> :
+<i>The Linux Programming Interface by <b>Michael Kerrisk</b></i> :
 <br>
-https://cdn.discordapp.com/attachments/1059463962049138758/1059464022707150858/The_Linux_Programming_Interface__PDFDrive_.pdf
+https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnx0aGljaGhvY2l0fGd4OjRiZjExNjc4ZTAzMzcxOA
