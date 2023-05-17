@@ -13,7 +13,15 @@
 	<img src="Resources/GIF/philo.gif" style="height: 275px; width:450px;background-color: #17202A;">
 </div>
 
-## *Overview*
+<i>
+<ul>
+    <li> <a href="#overview"> Overview</li> </a>
+    <li> <a href="#features"> Features</li> </a>
+    <li> <a href="#resources"> Resources</li> </a>
+</ul>
+</i>
+
+## <span id="overview">*Overview*</span>
 	./philo(_bonus) [nb_of_philosopher] [time_to_die] [time_to_eat] [time_to_sleep] [number_of_times_each_philosopher_must_eat]
 <p>
 	<ul>
@@ -27,7 +35,7 @@
 	</ul>
 </p>
 
-## *Features*
+## <span id ="features">*Features*</span>
 <b><i>philo :</i></b>
 - [x] Multithreading
 - [x] Mutexes
@@ -37,7 +45,7 @@
 - [x] Multithreading
 - [x] Semaphores
 
-## *Resources*
+## <span id="resources">*Resources*</span>
 
 <i>~ The Linux Programming Interface by <b>Michael Kerrisk</b></i> :
 <br>
