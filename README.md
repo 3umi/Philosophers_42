@@ -22,7 +22,9 @@
 </i>
 
 ## <span id="overview">*Overview*</span>
-	./philo(_bonus) [nb_of_philosopher] [time_to_die] [time_to_eat] [time_to_sleep] [number_of_times_each_philosopher_must_eat]
+```bash
+"./philo(_bonus)" <nb_of_philosopher> <time_to_die> <time_to_eat> <time_to_sleep> <number_of_times_each_philosopher_must_eat>
+```
 <p>
 	<ul>
 		<i>
