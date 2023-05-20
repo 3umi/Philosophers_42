@@ -9,7 +9,7 @@
 ## *Description*
 
 <div align="center">
-	<b> This program is a simulation of the dining philosophers problem. <br> <br> </b>
+	<b> This program is a simulation of the dining philosophers problem <br> <br> </b>
 	<img src="Resources/GIF/philo.gif" style="height: 275px; width:450px;background-color: #17202A;">
 </div>
 
