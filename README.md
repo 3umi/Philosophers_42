@@ -36,11 +36,11 @@
 </p>
 
 ## <span id ="features">*Features*</span>
-<b><i>philo :</i></b>
+<b><i>`./philo` :</i></b>
 - [x] Multithreading
 - [x] Mutexes
 
-<b><i>philo_bonus :</i></b>
+<b><i>`./philo_bonus` :</i></b>
 - [x] Multiprocessing
 - [x] Multithreading
 - [x] Semaphores
